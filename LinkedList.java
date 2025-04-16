@@ -64,8 +64,9 @@ public class LinkedList {
                 else {
                     current.prev.next = current.next;
                     current.next.prev = current.prev;
+                    size--;
                 }
-                size--;
+
                 return 0;
             }
         }

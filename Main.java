@@ -7,5 +7,9 @@ public class Main {
         table.Students.addStudent(30);
         table.enrollStudent(3,2);
         table.Students.display(3);
+        table.Courses.display(2);
+        System.out.println(table.removeEnrollment(3,2));
+        table.Students.display(3);
+        table.Courses.display(2);
     }
 }

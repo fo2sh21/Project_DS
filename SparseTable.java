@@ -21,6 +21,19 @@ public class SparseTable {
         }
         return -1;
     }
+
+    public int removeEnrollment(int s, int c) {
+        Node student = Students.find(s);
+        Node course = Courses.find(c);
+        if (student != null && course != null) {
+            int removedFromStudent = student.list.remove(c);
+            int removedFromCourse = course.list.remove(s);
+            if (removedFromStudent == 0 && removedFromCourse == 0) {
+                return 0;
+            }
+        }
+        return -1;
+    }
 }
 
 
