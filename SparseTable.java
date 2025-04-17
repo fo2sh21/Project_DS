@@ -66,8 +66,10 @@ public class SparseTable {
             System.out.println("Course is full !");
             return;
         }
-        course.content.addToTail(student);
-        student.content.addToTail(course);
+        Node courseReference = new Node(course.info, course.FRESH_ID);
+        Node studentReference = new Node(student.info, student.FRESH_ID);
+        course.content.addToTail(studentReference);
+        student.content.addToTail(courseReference);
     }
 
     public void listCoursesByStudent(int studentID) {

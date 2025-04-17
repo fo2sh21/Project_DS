@@ -130,6 +130,7 @@ public class LinkedList {
                 LinkedList tempContent = i.content;
                 i.info = minNode.info;
                 i.content = minNode.content;
+                i.FRESH_ID = minNode.FRESH_ID;
                 minNode.info = temp;
                 minNode.content = tempContent;
             }
