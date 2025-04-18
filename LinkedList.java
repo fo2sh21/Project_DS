@@ -7,6 +7,22 @@ public class LinkedList {
         size = 0;
     }
 
+    public LinkedList(LinkedList other) {
+        for (Node current = other.head; current != null; current = current.next) {
+            Node clone = new Node(current.info, current.freshId);
+            clone.content = new LinkedList(current.content);
+
+            if (this.size == 0) {
+                head = tail = clone;
+            } else {
+                tail.next = clone;
+                clone.prev = tail;
+                tail = clone;
+            }
+            this.size++;
+        }
+    }
+
     public void addToHead(int data, int id) {
         if (size == 0) {
             head = tail = new Node(data);
@@ -30,6 +46,7 @@ public class LinkedList {
         }
         size++;
     }
+
     public void addToTail(Node data) {
         if (size == 0) {
             head = tail = data;
@@ -40,6 +57,7 @@ public class LinkedList {
         }
         size++;
     }
+
     public int removeHead() {
         if (size == 0)
             return -1;
@@ -104,7 +122,7 @@ public class LinkedList {
     public Node nodeWithMaxFreshId() {
         Node result = head;
         for (Node current = head; current != null; current = current.next) {
-            if (current.FRESH_ID > result.FRESH_ID) {
+            if (current.freshId > result.freshId) {
                 result = current;
             }
         }
@@ -130,7 +148,7 @@ public class LinkedList {
                 LinkedList tempContent = i.content;
                 i.info = minNode.info;
                 i.content = minNode.content;
-                i.FRESH_ID = minNode.FRESH_ID;
+                i.freshId = minNode.freshId;
                 minNode.info = temp;
                 minNode.content = tempContent;
             }
