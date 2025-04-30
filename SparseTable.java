@@ -20,20 +20,23 @@ public class SparseTable {
     }
 
     public void addStudent(int studentID) {
-        record();
+        
         if (studentsList.find(studentID) != null) {
             System.out.println("Student already in table");
             return;
         }
+        record();
         studentsList.addToTail(studentID, freshCount);
         freshCount++;
     }
 
     public void addCourse(int courseID) {
-        record();
+        
         if (coursesList.find(courseID) == null) {
+            record();
             coursesList.addToTail(courseID, freshCount);
             freshCount++;
+            
         } else {
             System.out.println("Course already in table");
         }
@@ -68,7 +71,7 @@ public class SparseTable {
     }
 
     public void enrollStudent(int studentID, int courseID) {
-        record();
+        
         Node course = coursesList.find(courseID);
         Node student = studentsList.find(studentID);
         if (course == null) {
@@ -83,10 +86,10 @@ public class SparseTable {
             System.out.println("Course is full");
             return;
         }
-        Node courseReference = new Node(course.info, course.freshId);
-        Node studentReference = new Node(student.info, student.freshId);
-        course.content.addToTail(studentReference);
-        student.content.addToTail(courseReference);
+        record();
+        course.content.addToTail(student.info, student.freshId);
+        student.content.addToTail(course.info, course.freshId);
+        
     }
 
     public void listCoursesByStudent(int studentID) {

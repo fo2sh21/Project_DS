@@ -25,7 +25,7 @@ public class LinkedList {
 
     public void addToHead(int data, int id) {
         if (size == 0) {
-            head = tail = new Node(data);
+            head = tail = new Node(data,id);
         } else if (size == 1) {
             head = new Node(data, head, id);
             tail.prev = head;
@@ -47,16 +47,7 @@ public class LinkedList {
         size++;
     }
 
-    public void addToTail(Node data) {
-        if (size == 0) {
-            head = tail = data;
-        } else {
-            tail.next = data;
-            tail.next.prev = tail;
-            tail = tail.next;
-        }
-        size++;
-    }
+
 
     public int removeHead() {
         if (size == 0)

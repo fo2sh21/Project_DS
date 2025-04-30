@@ -4,11 +4,7 @@ public class Node {
     LinkedList content;
     int freshId;
 
-    Node(int id) {
-        next = prev = null;
-        content = new LinkedList();
-        this.freshId = id;
-    }
+
 
     Node(int info, int id) {
         this.info = info;
