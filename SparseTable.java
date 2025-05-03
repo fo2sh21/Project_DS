@@ -114,7 +114,26 @@ public class SparseTable {
         record();
         course.info.content.addToTail(new Student(student.info.studentId, student.info.freshId));
         student.info.content.addToTail(new Course(course.info.courseId, course.info.freshId));
+    }
 
+    public void removeEnrollment(int studentID, int courseID) {
+        Node<Course> course = coursesList.findById(courseID);
+        Node<Student> student = studentsList.findById(studentID);
+        if (course == null) {
+            System.out.println("Course not found");
+            return;
+        }
+        if (student == null) {
+            System.out.println("Student not found");
+            return;
+        }
+        if (student.info.content.findById(course.info.getId()) == null) {
+            System.out.println("Student not enrolled to the course");
+            return;
+        }
+        record();
+        course.info.content.removeById(studentID);
+        student.info.content.removeById(courseID);
     }
 
     public void listCoursesByStudent(int studentID) {
@@ -139,14 +158,24 @@ public class SparseTable {
         }
     }
 
-    public void sortStudentsByID() {
+    public void sortStudentsByID(int courseId) {
+        Node<Course> course = coursesList.findById(courseId);
+        if (course == null) {
+            System.out.println("No such course");
+            return;
+        }
         record();
-        studentsList.sortAscendingly();
+        course.info.content.sortAscendingly();
     }
 
-    public void sortCoursesById() {
+    public void sortCoursesById(int studentId) {
+        Node<Student> student = studentsList.findById(studentId);
+        if (student == null) {
+            System.out.println("No such student");
+            return;
+        }
         record();
-        coursesList.sortAscendingly();
+        student.info.content.sortAscendingly();
     }
 
     public boolean isFullCourse(int courseID) {

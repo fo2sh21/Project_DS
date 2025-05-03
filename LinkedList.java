@@ -57,11 +57,11 @@ public class LinkedList<T> {
         return 0;
     }
 
-    public int remove(T id) {
+    public int remove(T data) {
         if (size == 0)
             return -1;
         for (Node<T> current = head; current != null; current = current.next) {
-            if (current.info == id) {
+            if (current.info == data) {
                 if (current == head)
                     removeHead();
                 else if (current == tail)
