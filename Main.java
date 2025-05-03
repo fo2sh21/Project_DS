@@ -48,8 +48,8 @@ public class Main {
         // 7) Final state: list everything explicitly
         System.out.println("=== Final state ===");
         System.out.println("Last student added: " +
-                table.getLastStudentAdded().info);
+                table.getLastStudentAdded().studentId);
         System.out.println("Last course added: " +
-                table.getLastCourseAdded().info);
+                table.getLastCourseAdded().courseId);
     }
 }
